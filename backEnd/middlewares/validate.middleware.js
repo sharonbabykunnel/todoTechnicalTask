@@ -1,11 +1,13 @@
 import { validationResult } from "express-validator"
+import { ValidationError } from "../utils/errorHandler.js";
+import asyncHandler from "./asyncHandler.js";
 
-const validate = (req, res, next) => {
+const validate = asyncHandler((req, res, next) => {
     const error = validationResult(req);
     if (!error.isEmpty()) {
-        res.status(400).json({ success: false, error: error.array().map(err => ({ faild: err.path, message: err.msg })) });
+        throw new ValidationError(error.array().map(err => err.msg));
     }
     next();
-}
+})
 
 export default validate;

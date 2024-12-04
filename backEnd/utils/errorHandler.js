@@ -10,7 +10,7 @@ class BaseError extends Error{
 }
 
 class ValidationError extends BaseError{
-    constructor(messege) {
+    constructor(message) {
         super(message, 400)
     }
 }

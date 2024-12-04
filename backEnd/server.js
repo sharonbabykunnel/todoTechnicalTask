@@ -7,7 +7,9 @@ const routes = express.Router();
 
 routes.use('/v1/auth', auth);
 
-routes.all('*', NotFoundError);
+routes.all('*', (req, res, next) =>
+    next(new NotFoundError)
+);
 routes.use(globalErrorHandler);
 
 export default routes;
