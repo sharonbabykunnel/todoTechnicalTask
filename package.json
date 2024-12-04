@@ -2,9 +2,12 @@
   "name": "todo",
   "version": "1.0.0",
   "description": "",
+  "type": "module",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "dev": "nodemon index.js"
   },
   "author": "",
   "license": "ISC",
@@ -13,6 +16,10 @@
     "cors": "^2.8.5",
     "debug": "^4.3.7",
     "dotenv": "^16.4.6",
+    "express": "^4.21.1",
+    "express-rate-limit": "^7.4.1",
+    "express-validator": "^7.2.0",
+    "jsonwebtoken": "^9.0.2",
     "logger": "^0.0.1",
     "mongoose": "^8.8.3",
     "morgan": "^1.10.0"
