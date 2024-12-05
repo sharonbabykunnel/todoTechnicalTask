@@ -25,13 +25,19 @@ export const handleLogin = async (email, password)=>{
     }
 }
 
-export const handleRegister = async (name, email, password) => {
+export const handleRegister = async (name, email, password, number) => {
     const checkUser = await Auth.findByEmail(email);
     if (checkUser) {
         throw new ConflictError('User already exists');
     }
 
-    const user = await Auth.createUser(name, email, password);
+    //cheking whether the number is present database
+    const checkNumber = await Auth.findByNumber(number);
+    if (checkNumber) {
+        throw new ConflictError(`User already exist with this number`);
+    }
+
+    const user = await Auth.createUser(name, email, password, number);
 
     const accessToken = token(user._id);
 

@@ -5,8 +5,12 @@ export const findByEmail = async (email) => {
     return await User.findOne({ email });
 }
 
-export const createUser = async (name, email, password) => {
-    return await User.create({ name, email, password });
+export const findByNumber = async (number) => {
+    return await User.findOne({ number });
+}
+
+export const createUser = async (name, email, password, number) => {
+    return await User.create({ name, email, password, number });
 }
 
 export const verifyPassword = async (inputPassword, password) => {

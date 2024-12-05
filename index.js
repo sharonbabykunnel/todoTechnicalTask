@@ -12,10 +12,11 @@ const log = debug('app:server');
 const app = express();
 
 db();
-app.use(rateLimit({ max: 100, windowMs: 10 * 60 * 1000 }));
+app.use(rateLimit({ max: 1000, windowMs: 10 * 60 * 1000 }));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(cors({ origin: process.env.ORIGIN }));
+console.log(process.env.ORIGIN)
+app.use(cors({ origin: process.env.ORIGIN, credentials: true}));
 app.use(logger(`dev`));
 app.use(cookieParser())
 

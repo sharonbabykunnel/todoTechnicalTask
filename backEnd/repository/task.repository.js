@@ -34,8 +34,8 @@ export const find = async (status, assignee, dueDate, page, limit, user) => {
     }
 }
 
-export const editStatus = async (status, id) => {
-    return await Task.findByIdAndUpdate(id, { status });
+export const editStatus = async (id) => {
+    return await Task.findByIdAndUpdate(id, { status: "completed" });
 }
 
 export const deleteTask = async (id) => {
