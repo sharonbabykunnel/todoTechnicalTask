@@ -10,7 +10,6 @@ const auth = axios.create({
 
 export const signupApi = async (values) => {
     try {
-        console.log(values)
         const res = await auth.post('v1/auth/register', values);
         Success(res.data.message);
         localStorage.setItem('accessToken', res.data.accessToken)
